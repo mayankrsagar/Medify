@@ -12,7 +12,7 @@ import newsBlog from '../../assets/blog and news.png';
 import medicalStore from '../../assets/Capsule.png';
 import listOfDoctor from '../../assets/Carousel/list of doctor.png';
 import doctors from '../../assets/doctor face.png';
-import doctor from '../../assets/doctor.png';
+import doctor from '../../assets/Doctor.png';
 import labs from '../../assets/Drugstore.png';
 import hospital from '../../assets/Hospital.png';
 import qanda from '../../assets/q&a banner.png';
