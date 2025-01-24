@@ -23,6 +23,8 @@ import {
   Typography,
 } from '@mui/material';
 
+import CustomButton from './CustomButton';
+
 const TimeSelection = ({ setTimeSlot }) => {
   const [value, setValue] = useState("0"); // TabContext value
   const [selectedTime, setSelectedTime] = useState(""); // Selected time slot
@@ -39,14 +41,6 @@ const TimeSelection = ({ setTimeSlot }) => {
       month: "long",
     }).format(date);
   });
-
-  // Handle Swiper tab change
-  const handleTabChange = (swiper) => {
-    const activeSlideIndex = swiper.activeIndex;
-    setValue(String(activeSlideIndex));
-    setTimeSlot((prev) => ({ ...prev, date: dateLabels[activeSlideIndex] }));
-    setSelectedTime(""); // Reset time selection when changing tabs
-  };
 
   // Handle Button Click for time slot selection
   const handleTimeSlotClick = (time) => {
@@ -75,15 +69,17 @@ const TimeSelection = ({ setTimeSlot }) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            position: "relative", // Ensure proper positioning for CustomButton,
+            
           }}
         >
           <Swiper
             modules={[Navigation, A11y]}
             spaceBetween={10}
             slidesPerView={3}
-            navigation
-            onSlideChange={handleTabChange}
-          >
+            // navigation
+            style={{ paddingBottom: "2rem" ,width:"100%"}} // Add padding for CustomButton space
+          ><CustomButton position={"previous"}/>
             {dateLabels.map((label, index) => (
               <SwiperSlide key={index}>
                 <Button
@@ -101,6 +97,8 @@ const TimeSelection = ({ setTimeSlot }) => {
                 </Button>
               </SwiperSlide>
             ))}
+            {/* Custom Button Integrated */}
+            <CustomButton position={"next"}/>
           </Swiper>
         </Box>
 
